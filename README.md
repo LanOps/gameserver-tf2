@@ -1,4 +1,4 @@
-# TF2 Docker Server
+# TF2 Docker Image
 
 ## Usage
 
