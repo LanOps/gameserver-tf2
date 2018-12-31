@@ -2,23 +2,19 @@ FROM lanopsdev/gameserver-steamcmd:latest
 MAINTAINER Thornton Phillis (Th0rn0@lanops.co.uk)
 
 # Env Defaults
-ENV SRCDS_HOSTNAME default
+ENV SRCDS_HOSTNAME myServer
 ENV SRCDS_PORT 27015 
 ENV SRCDS_MAXPLAYERS 14 
 ENV SRCDS_TOKEN 0 
-ENV SRCDS_RCONPW default 
-ENV SRCDS_PW default
+ENV SRCDS_RCONPW rconpass 
+ENV SRCDS_PW password
 ENV SRCDS_REGION -1
 ENV SRCDS_PURE 1
 ENV SRCDS_MAP ctf_2fort
 ENV APP_ID 232250
 
-# Install TF2
-RUN /home/steam/steamcmd/steamcmd.sh +login anonymous \
-        +force_install_dir /home/steam/tf2 \
-        +app_update $APP_ID validate \
-        +quit
-
+# Add Start Script
+RUN mkdir -p /home/steam/tf2 
 RUN { \
 		echo '@ShutdownOnFailedCommand 1'; \
 		echo '@NoPromptForPassword 1'; \
@@ -26,9 +22,7 @@ RUN { \
 		echo 'force_install_dir /home/steam/tf2/'; \
 		echo 'app_update $APP_ID'; \
 		echo 'quit'; \
-} > /home/steam/tf2/tf2_update.txt
-
-# Add Start Script
+} > /home/steam/tf2_update.txt
 ADD startServer.sh /home/steam/startServer.sh
 
 # Expose Ports
