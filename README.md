@@ -3,24 +3,34 @@
 ## Usage
 
 ```
-docker run --name "TF2" \
-	-e SRCDS_HOSTNAME=myServer
-	-e SRCDS_PORT=27015
-	-e SRCDS_MAP=ctf_2fort
-	-e SRCDS_MAXPLAYERS=24
-	-e SRCDS_TOKEN=xxx
-	-e SRCDS_LAN=0 
-	-e SRCDS_PW=default
-	-e SRCDS_RCONPW=default
-
-	-p 27015:27015 
-	-p 27015:27015/udp 
+docker run --name "TF2" 		\
+	-e SRCDS_HOSTNAME=myServer 	\
+	-e SRCDS_PORT=27015			\
+	-e SRCDS_MAP=ctf_2fort		\
+	-e SRCDS_MAXPLAYERS=24		\
+	-e SRCDS_TOKEN=xxx			\
+	-e SRCDS_LAN=0 				\
+	-e SRCDS_PW=default 		\
+	-e SRCDS_RCONPW=default 	\
+	-p 27015:27015 				\
+	-p 27015:27015/udp 			\
 	lanopsdev/gameserver-tf2
 ```
 
 ### For Persistance mount the /home/steam/tf2 directory
 
-```docker run -ti -v localVolume:/home/steam/tf2 -e SRCDS_TOKEN=xxx -e SRCDS_MAP=ctf_2fort -e SRCDS_LAN=0 -e SRCDS_PW='' -p 27015:27015 -p 27015:27015/udp lanopsdev/gameserver-tf2```
+```
+docker run --name "TF2" 			\
+	-v localVolume:/home/steam/tf2 	\
+	-e SRCDS_HOSTNAME=myServer 		\
+	-e SRCDS_PORT=27015 			\
+	-e SRCDS_MAP=ctf_2fort 			\
+	-e SRCDS_MAXPLAYERS=24 			\
+	-e SRCDS_TOKEN=xxx 				\
+	-p 27015:27015  				\
+	-p 27015:27015/udp  			\
+	lanopsdev/gameserver-tf
+```
 
 
 ## Environment Variables
@@ -32,6 +42,6 @@ docker run --name "TF2" \
 * SRCDS_PW - Password for access to the server (Default password)
 * SRCDS_RCONPW - Password for RCON (Default rconpass)
 * SRCDS_REGION - Server Region (Default -1)
-* SRCDS_TOKEN - Access token from [http://steamcommunity.com/dev/managegameservers](http://steamcommunity.com/dev/managegameservers) - Required for Browser Broadcast
+* SRCDS_TOKEN - Server token from [http://steamcommunity.com/dev/managegameservers](http://steamcommunity.com/dev/managegameservers) - Required for Browser Broadcast
 * SRCDS_LAN - Set Lan Server (Default 0)
 * SRCDS_MAP - Starting Map (Default ctf_2fort)
