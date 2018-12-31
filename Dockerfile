@@ -16,12 +16,12 @@ ENV APP_ID 232250
 # Add Start Script
 RUN mkdir -p /home/steam/tf2 
 RUN { \
-		echo '@ShutdownOnFailedCommand 1'; \
-		echo '@NoPromptForPassword 1'; \
-		echo 'login anonymous'; \
-		echo 'force_install_dir /home/steam/tf2/'; \
-		echo 'app_update $APP_ID'; \
-		echo 'quit'; \
+        echo '@ShutdownOnFailedCommand 1'; \
+        echo '@NoPromptForPassword 1'; \
+        echo 'login anonymous'; \
+        echo 'force_install_dir /home/steam/tf2/'; \
+        echo 'app_update $APP_ID'; \
+        echo 'quit'; \
 } > /home/steam/tf2_update.txt
 ADD startServer.sh /home/steam/startServer.sh
 
