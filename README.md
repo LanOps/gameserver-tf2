@@ -3,7 +3,7 @@
 ## Usage
 
 ```
-docker run --name "TF2" \
+docker run -it --name "TF2" \
     -e SRCDS_HOSTNAME=myServer \
     -e SRCDS_PORT=27015 \
     -e SRCDS_MAP=ctf_2fort \
@@ -20,7 +20,7 @@ docker run --name "TF2" \
 ### For Persistance mount the /home/steam/tf2 directory
 
 ```
-docker run --name "TF2" \
+docker run -it --name "TF2" \
     -v localVolume:/home/steam/tf2 \
     -e SRCDS_HOSTNAME=myServer \
     -e SRCDS_PORT=27015 \
