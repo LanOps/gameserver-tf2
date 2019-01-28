@@ -2,7 +2,7 @@ FROM lanopsdev/gameserver-steamcmd:latest
 MAINTAINER Thornton Phillis (Th0rn0@lanops.co.uk)
 
 # Env Defaults
-ENV SRCDS_HOSTNAME myServer
+ENV SRCDS_HOSTNAME default
 ENV SRCDS_PORT 27015 
 ENV SRCDS_MAXPLAYERS 14 
 ENV SRCDS_TOKEN 0 
