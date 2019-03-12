@@ -6,7 +6,7 @@ steps:
 
 # Notifacations - Start
 
-- name: notify-discord-start-staging
+- name: notify-discord-start-master
   image: plugins/webhook
   settings:
     urls:
@@ -21,7 +21,7 @@ steps:
     event:
     - push
     branch:
-    - staging
+    - master
 
 - name: notify-discord-start-master-tagged
   image: plugins/webhook
@@ -53,6 +53,8 @@ steps:
     password:
       from_secret: DOCKERHUB_PASSWORD
   when:
+    event:
+    - push
     branch:
     - master
 
@@ -86,8 +88,6 @@ steps:
         "avatar_url": "https://cdn.worldvectorlogo.com/logos/drone.svg"
       }
   when:
-    event:
-    - push
     status:
     - failure
 
@@ -130,6 +130,6 @@ trigger:
   - master
 ---
 kind: signature
-hmac: 3c01211dbd75855418d52ea3771b92e48cd948003a0b2aa7139ebe545f6bdf06
+hmac: 625386df327ee8ff66aebbddcd0cf974cd912496a3061c4a181e537171566276
 
 ...
