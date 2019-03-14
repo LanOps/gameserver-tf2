@@ -1,9 +1,49 @@
-#!/bin/sh
+#!/bin/bash
 
-cd /home/steam/tf2
+cd ${SRCDS_SRV_DIR}
+
+getMetaMod="false"
+getSourceMod="false"
+
+if [ ! -d "tf2" ];
+then
+    mkdir tf2
+    cp -r /tmp/cfg tf2/cfg/
+fi
+
+# Check if MetaMod Needs updating
+
+if [ ! -d "tf2/addons/metamod" ] || [ ! -f "tf2/addons/mm-version" ];
+then
+    getMetaMod="true"
+fi
+if [ -f "tf2/addons/mm-version" ];
+then
+    content=$(head -n 1 tf2/addons/mm-version)
+    if [ "${METAMOD_VERSION_MAJOR}.${METAMOD_VERSION_MINOR}-${METAMOD_BUILD}" != "$content" ];
+    then
+        getMetaMod="true"
+    fi
+fi
+
+# Check if SourceMod Needs updating
+
+if [ ! -d "tf2/addons/sourcemod" ] || [ ! -f "tf2/addons/sm-version" ];
+then
+    getSourceMod="true"
+fi
+if [ -f "tf2/addons/sm-version" ];
+then
+    content=$(head -n 1 tf2/addons/sm-version)
+    if [ "${SOURCEMOD_VERSION_MAJOR}.${SOURCEMOD_VERSION_MINOR}-${SOURCEMOD_BUILD}" != "$content" ];
+    then
+        getSourceMod="true"
+    fi
+fi
+
 /home/steam/steamcmd/steamcmd.sh +login anonymous   \
-        +force_install_dir /home/steam/tf2          \
-        +app_update ${APP_ID} validate              \
+        +force_install_dir ${SRCDS_SRV_DIR}          \
+        +app_update ${SRCDS_APP_ID} validate              \
         +quit
 ./srcds_run                                         \
     -game tf                                        \
