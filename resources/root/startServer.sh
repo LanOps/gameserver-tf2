@@ -41,9 +41,17 @@ then
     fi
 fi
 
+export SRCDS_HOSTNAME="${SRCDS_HOSTNAME:-An Amazing CSGO Server}"
+
+sed -i 's/SERVER_NAME/'"$SRCDS_HOSTNAME"'/g' /home/steam/tf2/tf2/cfg/server.cfg
+sed -i 's/RCON_PASSWORD/'"$SRCDS_RCONPW"'/g' /home/steam/tf2/tf2/cfg/server.cfg
+sed -i 's/SV_PASSWORD/'"$SRCDS_PW"'/g' /home/steam/tf2/tf2/cfg/server.cfg
+
+# Run Server
+
 /home/steam/steamcmd/steamcmd.sh +login anonymous   \
-        +force_install_dir ${SRCDS_SRV_DIR}          \
-        +app_update ${SRCDS_APP_ID} validate              \
+        +force_install_dir ${SRCDS_SRV_DIR}         \
+        +app_update ${SRCDS_APP_ID} validate        \
         +quit
 ./srcds_run                                         \
     -game tf                                        \
@@ -54,10 +62,10 @@ fi
     -port ${SRCDS_PORT}                             \
     +sv_pure ${SRCDS_PURE}                          \
     +maxplayers ${SRCDS_MAXPLAYERS}                 \
-    +hostname "${SRCDS_HOSTNAME}"                   \
     +sv_password ${SRCDS_PW}                        \
     +rcon_password ${SRCDS_RCONPW}                  \
-    sv_region ${SRCDS_REGION}                       \
-    +sv_setsteamaccount "${SRCDS_TOKEN}"            \
-    +sv_lan "${SRCDS_LAN}"                          \
-    +map ${SRCDS_MAP}
+    +sv_region ${SRCDS_REGION}                      \
+    +sv_setsteamaccount ${SRCDS_TOKEN}              \
+    +sv_lan ${SRCDS_LAN}                            \
+    +map ${SRCDS_MAP}                               \
+    +ip 0.0.0.0
