@@ -25,6 +25,7 @@ docker run -it --name "TF2" \
     -e SRCDS_MAP=ctf_2fort \
     -e SRCDS_MAXPLAYERS=24 \
     -e SRCDS_TOKEN=xxx \
+    -e SRCDS_MAP_ROTATION=mapcycle_default.txt \
     -p 27015:27015 \
     -p 27015:27015/udp \
     lanopsdev/gameserver-tf2
