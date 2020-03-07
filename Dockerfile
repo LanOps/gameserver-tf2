@@ -1,5 +1,5 @@
 FROM lanopsdev/gameserver-steamcmd:latest
-MAINTAINER Thornton Phillis (Th0rn0@lanops.co.uk)
+LABEL MAINTAINER="Thornton Phillis (Th0rn0@lanops.co.uk)"
 
 # Env - Defaults
 
