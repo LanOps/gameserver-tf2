@@ -58,7 +58,7 @@ fi
 
 # Update Base Config
 
-export SRCDS_HOSTNAME="${SRCDS_HOSTNAME:-An Amazing CSGO Server}"
+export SRCDS_HOSTNAME="${SRCDS_HOSTNAME:-An Amazing TF2 Server}"
 
 sed -i 's/SERVER_NAME/'"$SRCDS_HOSTNAME"'/g' ${SRCDS_SRV_DIR}/tf/cfg/server.cfg
 sed -i 's/RCON_PASSWORD/'"$SRCDS_RCONPW"'/g' ${SRCDS_SRV_DIR}/tf/cfg/server.cfg
