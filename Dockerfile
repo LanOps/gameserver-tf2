@@ -11,7 +11,8 @@ ENV SRCDS_REGION -1
 ENV SRCDS_PURE 1
 ENV SRCDS_MAP ctf_2fort
 ENV SRCDS_LAN 0
-ENV SRCDS_MAP_ROTATION mapcycle_default.txt  
+ENV SRCDS_MAP_ROTATION mapcycle_default.txt 
+ENV SRCDS_CONFIG_FILE server.cfg
 
 # Env - Server
 

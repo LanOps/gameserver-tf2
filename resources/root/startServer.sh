@@ -86,4 +86,6 @@ sed -i 's/SV_PASSWORD/'"$SRCDS_PW"'/g' ${SRCDS_SRV_DIR}/tf/cfg/server.cfg
     +sv_lan ${SRCDS_LAN}                            \
     +map ${SRCDS_MAP}                               \
     +mapcyclefile ${SRCDS_MAP_ROTATION}             \
+    +randommap                                      \
+    +servercfgfile ${SRCDS_CONFIG_FILE}             \
     +ip 0.0.0.0
