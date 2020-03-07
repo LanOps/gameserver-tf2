@@ -85,5 +85,5 @@ sed -i 's/SV_PASSWORD/'"$SRCDS_PW"'/g' ${SRCDS_SRV_DIR}/tf/cfg/server.cfg
     +sv_setsteamaccount ${SRCDS_TOKEN}              \
     +sv_lan ${SRCDS_LAN}                            \
     +map ${SRCDS_MAP}                               \
-    +mapcyclefile ${SRCDS_MAP_ROTATION}
+    +mapcyclefile ${SRCDS_MAP_ROTATION}             \
     +ip 0.0.0.0
