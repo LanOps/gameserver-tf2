@@ -40,6 +40,7 @@ RUN { \
         echo 'quit'; \
 } > /home/steam/tf2_update.txt
 ADD resources/root/startServer.sh /home/steam/startServer.sh
+ADD resources/root/metamod.vdf /home/steam/metamod.vdf
 
 # Pre Load LanOps Server Configs
 
