@@ -1,5 +1,5 @@
 FROM lanopsdev/gameserver-steamcmd:latest
-MAINTAINER Thornton Phillis (Th0rn0@lanops.co.uk)
+LABEL MAINTAINER="Thornton Phillis (Th0rn0@lanops.co.uk)"
 
 # Env - Defaults
 
@@ -11,6 +11,8 @@ ENV SRCDS_REGION -1
 ENV SRCDS_PURE 1
 ENV SRCDS_MAP ctf_2fort
 ENV SRCDS_LAN 0
+ENV SRCDS_MAP_ROTATION mapcycle_default.txt 
+ENV SRCDS_CONFIG_FILE server.cfg
 
 # Env - Server
 
@@ -38,6 +40,7 @@ RUN { \
         echo 'quit'; \
 } > /home/steam/tf2_update.txt
 ADD resources/root/startServer.sh /home/steam/startServer.sh
+ADD resources/root/metamod.vdf /home/steam/metamod.vdf
 
 # Pre Load LanOps Server Configs
 

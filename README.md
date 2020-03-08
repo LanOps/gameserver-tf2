@@ -10,6 +10,8 @@ docker run -it --name "TF2" \
     -e SRCDS_TOKEN=xxx \
     -e SRCDS_LAN=0 \
     -e SRCDS_RCONPW=default \
+    -e SRCDS_MAP_ROTATION=mapcycle_default.txt \
+    -e SRCDS_CONFIG_FILE=server.cfg \
     -p 27015:27015 \
     -p 27015:27015/udp \
     lanopsdev/gameserver-tf2
@@ -24,9 +26,11 @@ docker run -it --name "TF2" \
     -e SRCDS_MAP=ctf_2fort \
     -e SRCDS_MAXPLAYERS=24 \
     -e SRCDS_TOKEN=xxx \
+    -e SRCDS_MAP_ROTATION=mapcycle_default.txt \
+    -e SRCDS_CONFIG_FILE=server.cfg \
     -p 27015:27015 \
     -p 27015:27015/udp \
-    lanopsdev/gameserver-tf
+    lanopsdev/gameserver-tf2
 ```
 
 
@@ -42,3 +46,5 @@ docker run -it --name "TF2" \
 * SRCDS_TOKEN - Server token from [http://steamcommunity.com/dev/managegameservers](http://steamcommunity.com/dev/managegameservers) - Required for Browser Broadcast
 * SRCDS_LAN - Set Lan Server (Default 0)
 * SRCDS_MAP - Starting Map (Default ctf_2fort)
+* SRCDS_MAP_ROTATION - Select a map cycle (located in tf/cfg, default mapcycle_default.txt)
+* SRCDS_CONFIG_FILE - Allow for selecting a different server config file (Default server.cfg)

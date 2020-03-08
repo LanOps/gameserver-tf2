@@ -58,11 +58,12 @@ fi
 
 # Update Base Config
 
-export SRCDS_HOSTNAME="${SRCDS_HOSTNAME:-An Amazing CSGO Server}"
+export SRCDS_HOSTNAME="${SRCDS_HOSTNAME:-An Amazing TF2 Server}"
 
 sed -i 's/SERVER_NAME/'"$SRCDS_HOSTNAME"'/g' ${SRCDS_SRV_DIR}/tf/cfg/server.cfg
 sed -i 's/RCON_PASSWORD/'"$SRCDS_RCONPW"'/g' ${SRCDS_SRV_DIR}/tf/cfg/server.cfg
 sed -i 's/SV_PASSWORD/'"$SRCDS_PW"'/g' ${SRCDS_SRV_DIR}/tf/cfg/server.cfg
+cp -f /home/steam/metamod.vdf ${SRCDS_SRV_DIR}/tf/cfg/addons/metamod.vdf
 
 # Run Server
 
@@ -85,4 +86,7 @@ sed -i 's/SV_PASSWORD/'"$SRCDS_PW"'/g' ${SRCDS_SRV_DIR}/tf/cfg/server.cfg
     +sv_setsteamaccount ${SRCDS_TOKEN}              \
     +sv_lan ${SRCDS_LAN}                            \
     +map ${SRCDS_MAP}                               \
+    +mapcyclefile ${SRCDS_MAP_ROTATION}             \
+    +randommap                                      \
+    +servercfgfile ${SRCDS_CONFIG_FILE}             \
     +ip 0.0.0.0
