@@ -1,6 +1,8 @@
 # TF2 Docker Image
 [![Build Status](http://drone.th0rn0.co.uk/api/badges/LanOps/gameserver-tf2/status.svg)](http://drone.th0rn0.co.uk/LanOps/gameserver-tf2)
 
+TF2 Dedicated Server with Metamod & Sourcemod
+
 ## Prerequisites
 
 You must create the mount directory and give the container full read and write permissions.
@@ -8,21 +10,21 @@ You must create the mount directory and give the container full read and write p
 ## Usage
 
 ```
-docker run -it --name "TF2" \
-    -v /path/to/local/mount:/home/steam/tf2 \
-    -p 27015:27015 \
-    -p 27015:27015/udp \
+docker run -it --name "TF2"                         \
+    -v /path/to/local/mount:/home/steam/tf2         \
+    -p 27015:27015                                  \
+    -p 27015:27015/udp                              \
     lanopsdev/gameserver-tf2
 ```
 
 You can also use the Entrypoint and CMD to customize configs and plugins like you would normally with SRCDS (Port must be changed via Env Variable);
 
 ```
-docker run -it --name "TF2" \
-    -v /path/to/local/mount:/home/steam/tf2 \
-    -p 27015:27015 \
-    -p 27015:27015/udp \
-    lanopsdev/gameserver-tf2 \
+docker run -it --name "TF2"                         \
+    -v /path/to/local/mount:/home/steam/tf2         \
+    -p 27015:27015                                  \
+    -p 27015:27015/udp                              \
+    lanopsdev/gameserver-tf2                        \
     +sv_pure ${SRCDS_PURE}                          \
     +maxplayers ${SRCDS_MAXPLAYERS}                 \
     +sv_password ${SRCDS_PW}                        \
