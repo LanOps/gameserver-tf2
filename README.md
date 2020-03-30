@@ -1,44 +1,39 @@
 # TF2 Docker Image
 [![Build Status](http://drone.th0rn0.co.uk/api/badges/LanOps/gameserver-tf2/status.svg)](http://drone.th0rn0.co.uk/LanOps/gameserver-tf2)
+
+## Prerequisites
+
+You must create the mount directory and give the container full read and write permissions.
+
 ## Usage
 
 ```
 docker run -it --name "TF2" \
-    -e SRCDS_HOSTNAME=myServer \
-    -e SRCDS_MAP=ctf_2fort \
-    -e SRCDS_MAXPLAYERS=24 \
-    -e SRCDS_TOKEN=xxx \
-    -e SRCDS_LAN=0 \
-    -e SRCDS_RCONPW=default \
+    -v /path/to/local/mount:/home/steam/tf2 \
     -p 27015:27015 \
     -p 27015:27015/udp \
     lanopsdev/gameserver-tf2
 ```
 
-### For Persistance mount the /home/steam/tf2 directory
+You can also use the Entrypoint and CMD to customize configs and plugins like you would normally with SRCDS (Port must be changed via Env Variable);
 
 ```
 docker run -it --name "TF2" \
-    -v localVolume:/home/steam/tf2 \
-    -e SRCDS_HOSTNAME=myServer \
-    -e SRCDS_MAP=ctf_2fort \
-    -e SRCDS_MAXPLAYERS=24 \
-    -e SRCDS_TOKEN=xxx \
+    -v /path/to/local/mount:/home/steam/tf2 \
     -p 27015:27015 \
     -p 27015:27015/udp \
-    lanopsdev/gameserver-tf
+    lanopsdev/gameserver-tf2 \
+    +sv_pure ${SRCDS_PURE}                          \
+    +maxplayers ${SRCDS_MAXPLAYERS}                 \
+    +sv_password ${SRCDS_PW}                        \
+    +rcon_password ${SRCDS_RCONPW}                  \
+    +sv_region ${SRCDS_REGION}                      \
+    +sv_setsteamaccount ${SRCDS_TOKEN}              \
+    +sv_lan ${SRCDS_LAN}                            \
+    +map ${SRCDS_MAP}                               \
+    +ip 0.0.0.0
 ```
-
 
 ## Environment Variables
 
 * SRCDS_PORT - Port Number for the server to run on (Default 27015)
-* SRCDS_PURE - Set the pure level of the server (Default 1)
-* SRCDS_MAXPLAYERS - Max number of players (Default 14)
-* SRCDS_HOSTNAME - Server Name (Default myServer)
-* SRCDS_PW - Password for access to the server (Default password)
-* SRCDS_RCONPW - Password for RCON (Default rconpass)
-* SRCDS_REGION - Server Region (Default -1)
-* SRCDS_TOKEN - Server token from [http://steamcommunity.com/dev/managegameservers](http://steamcommunity.com/dev/managegameservers) - Required for Browser Broadcast
-* SRCDS_LAN - Set Lan Server (Default 0)
-* SRCDS_MAP - Starting Map (Default ctf_2fort)

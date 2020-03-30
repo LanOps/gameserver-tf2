@@ -3,14 +3,7 @@ MAINTAINER Thornton Phillis (Th0rn0@lanops.co.uk)
 
 # Env - Defaults
 
-ENV SRCDS_HOSTNAME default
 ENV SRCDS_PORT 27015 
-ENV SRCDS_MAXPLAYERS 14 
-ENV SRCDS_RCONPW rconpass 
-ENV SRCDS_REGION -1
-ENV SRCDS_PURE 1
-ENV SRCDS_MAP ctf_2fort
-ENV SRCDS_LAN 0
 
 # Env - Server
 
@@ -43,7 +36,6 @@ ADD resources/root/startServer.sh /home/steam/startServer.sh
 
 RUN mkdir -p ${SRCDS_SRV_DIR}/tf2/cfg/
 COPY resources/root/cfg /tmp/cfg/
-RUN ls /tmp
 
 # Expose Ports
 
@@ -53,5 +45,5 @@ EXPOSE 27020 27005 51840
 
 # Start Server
 
-CMD ["/home/steam/startServer.sh"]
-
+ENTRYPOINT ["/home/steam/startServer.sh"]
+CMD ['+sv_pure 1', '+maxplayers 32', '+sv_region -1', '+sv_lan 0', '+map ctf_2fort', '+ip 0.0.0.0']
