@@ -33,6 +33,7 @@ docker run -it --name "TF2"                         \
     +sv_setsteamaccount ${SRCDS_TOKEN}              \
     +sv_lan ${SRCDS_LAN}                            \
     +map ${SRCDS_MAP}                               \
+    +mapcyclefile mapcycle_default.txt              \
     +ip 0.0.0.0
 ```
 
