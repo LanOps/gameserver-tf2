@@ -1,5 +1,4 @@
 # TF2 Docker Image
-[![Build Status](http://drone.th0rn0.co.uk/api/badges/LanOps/gameserver-tf2/status.svg)](http://drone.th0rn0.co.uk/LanOps/gameserver-tf2)
 
 TF2 Dedicated Server with Metamod & Sourcemod
 

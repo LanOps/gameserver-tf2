@@ -41,9 +41,24 @@ then
     fi
 fi
 
+# Update MetaMod
+
+if [ "$getMetaMod" = "true" ];
+then
+    curl -sSL https://mms.alliedmods.net/mmsdrop/$METAMOD_VERSION_MAJOR/mmsource-$METAMOD_VERSION_MAJOR.$METAMOD_VERSION_MINOR-git$METAMOD_BUILD-linux.tar.gz \
+        -o /tmp/metamod.tar.gz
+    tar -xzvf /tmp/metamod.tar.gz --directory $SRCDS_SRV_DIR/tf
+    rm /tmp/metamod.tar.gz
+    if [ -f "tf/addons/mm-version" ];
+    then
+        rm tf/addons/mm-version
+    fi
+    echo "${METAMOD_VERSION_MAJOR}.${METAMOD_VERSION_MINOR}-${METAMOD_BUILD}" > tf/addons/mm-version
+fi
+
 # Update SourceMod
 
-if [[ $getSourceMod == "true" ]];
+if [ "$getSourceMod" = "true" ];
 then
     curl -sSL https://sm.alliedmods.net/smdrop/$SOURCEMOD_VERSION_MAJOR/sourcemod-$SOURCEMOD_VERSION_MAJOR.$SOURCEMOD_VERSION_MINOR-git$SOURCEMOD_BUILD-linux.tar.gz \
         -o /tmp/sourcemod.tar.gz
