@@ -130,6 +130,6 @@ trigger:
   - master
 ---
 kind: signature
-hmac: 84e3f478c8f8036cd9b85a0de911e8f1383c9bfd901cc3d24a632e42c368be2a
+hmac: 437c8c72e68ae2f82d22ba79c011a63c81c743910726ffb28fef9d6bde8794d9
 
 ...
