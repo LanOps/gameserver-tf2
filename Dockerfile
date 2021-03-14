@@ -46,4 +46,4 @@ EXPOSE 27020 27005 51840
 # Start Server
 
 ENTRYPOINT ["/home/steam/startServer.sh"]
-CMD ['+sv_pure 1', '+maxplayers 32', '+sv_region -1', '+sv_lan 0', '+exec server.cfg', '+mapcyclefile mapcycle_default.txt', '+randommap', '+map ctf_2fort', '+ip 0.0.0.0']
+CMD ["+sv_pure 1 +maxplayers 32 +sv_region -1 +sv_lan 0 +exec server.cfg +mapcyclefile mapcycle_default.txt +map ctf_2fort +ip 0.0.0.0"]
